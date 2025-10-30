@@ -1,0 +1,74 @@
+.cooldown-timer {
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(255, 106, 136, 0.3);
+  animation: slideDown 0.3s ease;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cooldown-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cooldown-text {
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.cooldown-time {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Courier New", monospace;
+  min-width: 60px;
+  text-align: right;
+}
+
+.cooldown-progress {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cooldown-progress-bar {
+  height: 100%;
+  background: white;
+  border-radius: 4px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .cooldown-timer {
+    padding: 12px;
+  }
+
+  .cooldown-text {
+    font-size: 14px;
+  }
+
+  .cooldown-time {
+    font-size: 18px;
+  }
+}

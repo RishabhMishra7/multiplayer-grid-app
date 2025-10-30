@@ -1,0 +1,106 @@
+.grid {
+  display: inline-block;
+  background: #8bc34a;
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(139, 195, 74, 0.3);
+  position: relative;
+}
+
+.grid-row {
+  display: flex;
+}
+
+.grid-cell {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #689f38;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.grid-cell.empty.clickable:hover {
+  background: #f1f8e9;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.grid-cell.occupied {
+  background: #dcedc8;
+  cursor: not-allowed;
+}
+
+.grid-cell.occupied .cell-value {
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cell-value {
+  color: #333;
+  user-select: none;
+}
+
+.grid-disabled {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.grid-disabled .grid-cell {
+  cursor: not-allowed;
+}
+
+/* Striped pattern for certain cells - matching the design */
+.grid-cell:nth-child(3n + 2):nth-last-child(n + 7) {
+  background: repeating-linear-gradient(
+    -45deg,
+    white,
+    white 5px,
+    #e8f5e9 5px,
+    #e8f5e9 10px
+  );
+}
+
+/* Numbers display */
+.grid-cell[data-row="0"][data-col="0"]::after,
+.grid-cell[data-row="0"][data-col="1"]::after,
+.grid-cell[data-row="2"][data-col="0"]::after,
+.grid-cell[data-row="4"][data-col="0"]::after {
+  content: attr(data-value);
+  position: absolute;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .grid-cell {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .grid {
+    padding: 15px;
+  }
+}
