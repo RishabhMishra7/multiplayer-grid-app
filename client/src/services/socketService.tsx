@@ -15,10 +15,13 @@ class SocketService {
     }
 
     if (!this.socket) {
-      this.socket = io("http://localhost:3001", {
-        transports: ["websocket"],
-        reconnection: true,
-      });
+      this.socket = io(
+        process.env.REACT_APP_SERVER_URL || "http://localhost:3001",
+        {
+          transports: ["websocket"],
+          reconnection: true,
+        }
+      );
       (window as any)._globalSocket = this.socket; // 👈 persist globally
     }
 
